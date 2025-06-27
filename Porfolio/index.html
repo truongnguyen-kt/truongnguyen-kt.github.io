@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Me</title>
+    <meta name="description" content="Aboud Me">
+    <meta name="keywords" content="porfolio, profile, about me">
+    <meta name="author" content="Blues Dev Team">
+    <meta name="google-adsense-account" content="ca-pub-8009575625895063">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8009575625895063"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Blues Dev Team</h1>
+        <p>Nguyễn Hoàng Lam Trường (Blues)</p>
+    </header>
+
+    <nav>
+        <button onclick="showSection('profile')">Profile</button>
+        <a href="../index.html">Home</a>
+    </nav>
+
+    <main>
+        <section id="profile">
+            <h1>hello</h1>
+        </section>
+        <section id="skills">
+        </section>
+        <section id="work-experience">
+        </section>
+        <section id="project">
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Blues Dev Team - Học lập trình Java Spring Boot chuyên nghiệp.
+    </footer>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+            document.getElementById(id).classList.add("active");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+
+</html>
