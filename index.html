@@ -19,16 +19,127 @@
 <body>
 
   <header>
-    <h1>Blues Dev Team</h1>
+    <h1>Hướng Dẫn Java Spring Boot 2025</h1>
     <p>Xây dựng ứng dụng web chuyên nghiệp với Spring Boot và Java</p>
   </header>
 
   <nav>
-    <a href="BasicSpringBoot/index.html">Basic Java SpringBoot</a>
-    <a href="Porfolio/index.html">About Me</a>
+    <button onclick="showSection('gioithieu')">Giới thiệu</button>
+    <button onclick="showSection('caidat')">Cài đặt</button>
+    <button onclick="showSection('cauhinh')">Cấu trúc & Cấu hình</button>
+    <button onclick="showSection('vidu')">Ví dụ REST API</button>
+    <button onclick="showSection('database')">Kết nối Database</button>
+    <button onclick="showSection('baomat')">Bảo mật (JWT)</button>
+    <button onclick="showSection('triểnkhai')">Triển khai</button>
+    <!-- <a href="Home/index.html">Home</a> -->
   </nav>
 
   <main>
+    <section id="gioithieu" class="active">
+      <h2>Giới thiệu Spring Boot</h2>
+      <p><strong>Spring Boot</strong> là một framework thuộc hệ sinh thái Spring giúp đơn giản hóa quá trình phát triển
+        ứng dụng Java web. Với Spring Boot, bạn có thể:</p>
+      <ul>
+        <li>Tạo REST API nhanh chóng</li>
+        <li>Kết nối cơ sở dữ liệu bằng JPA/Hibernate</li>
+        <li>Bảo mật với JWT, OAuth2</li>
+        <li>Triển khai dễ dàng lên Cloud hoặc VPS</li>
+      </ul>
+      <p>Spring Boot là lựa chọn hàng đầu trong phát triển backend hiện đại.</p>
+    </section>
+
+    <section id="caidat">
+      <h2>Cài đặt Spring Boot</h2>
+      <p>Cách nhanh nhất để bắt đầu là dùng <strong>Spring Initializr</strong>:</p>
+      <p><a href="https://start.spring.io/" target="_blank">https://start.spring.io/</a></p>
+      <p>Chọn các thông số sau:</p>
+      <ul>
+        <li>Project: Maven</li>
+        <li>Language: Java</li>
+        <li>Spring Boot: 3.2+</li>
+        <li>Dependencies: Spring Web, Spring Data JPA, H2 Database (hoặc MySQL)</li>
+      </ul>
+      <p>Sau đó, giải nén và mở trong IntelliJ hoặc VS Code để bắt đầu lập trình.</p>
+    </section>
+
+    <section id="cauhinh">
+      <h2>Cấu trúc dự án & Cấu hình</h2>
+      <p>Một dự án Spring Boot có cấu trúc như sau:</p>
+      <pre><code>src/
+├── main/
+│   ├── java/
+│   │   └── com.example.app/
+│   │       ├── controller/
+│   │       ├── service/
+│   │       ├── repository/
+│   │       └── AppApplication.java
+│   └── resources/
+│       ├── application.properties
+│       └── static/
+      </code></pre>
+      <p>File <code>application.properties</code> để cấu hình cổng, database, JWT, v.v.</p>
+    </section>
+
+    <section id="vidu">
+      <h2>Ví dụ REST API đơn giản</h2>
+      <p>Controller tạo API <code>/hello</code>:</p>
+      <pre><code>@RestController
+@RequestMapping("/api")
+public class HelloController {
+    @GetMapping("/hello")
+    public String hello() {
+        return "Xin chào từ Spring Boot!";
+    }
+}</code></pre>
+      <p>Khi chạy, truy cập: <code>http://localhost:8080/api/hello</code></p>
+    </section>
+
+    <section id="database">
+      <h2>Kết nối cơ sở dữ liệu với JPA</h2>
+      <p>Thêm cấu hình vào <code>application.properties</code>:</p>
+      <pre><code>spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.jpa.hibernate.ddl-auto=update
+      </code></pre>
+      <p>Tạo entity và repository:</p>
+      <pre><code>@Entity
+public class User {
+    @Id @GeneratedValue
+    private Long id;
+    private String name;
+}
+
+public interface UserRepository extends JpaRepository&lt;User, Long&gt; {}
+      </code></pre>
+    </section>
+
+    <section id="baomat">
+      <h2>Bảo mật với Spring Security và JWT</h2>
+      <p>Spring Boot hỗ trợ bảo mật nâng cao:</p>
+      <ul>
+        <li>Login bằng JWT</li>
+        <li>Phân quyền role-based</li>
+      </ul>
+      <p>Cài dependency:</p>
+      <pre><code>implementation 'org.springframework.boot:spring-boot-starter-security'
+implementation 'io.jsonwebtoken:jjwt:0.9.1'</code></pre>
+      <p>Sau đó cấu hình SecurityFilter và JwtTokenProvider.</p>
+    </section>
+
+    <section id="triểnkhai">
+      <h2>Triển khai ứng dụng Spring Boot</h2>
+      <p>Bạn có thể triển khai trên:</p>
+      <ul>
+        <li><strong>Heroku</strong> – dễ dùng, miễn phí</li>
+        <li><strong>VPS Ubuntu</strong> – cài Java, chạy jar bằng terminal</li>
+        <li><strong>Docker</strong> – build container dễ dàng</li>
+      </ul>
+      <p>Build ứng dụng:</p>
+      <pre><code>./mvnw clean package</code></pre>
+      <p>Chạy với:</p>
+      <pre><code>java -jar target/myapp-0.0.1-SNAPSHOT.jar</code></pre>
+    </section>
   </main>
 
   <footer>
